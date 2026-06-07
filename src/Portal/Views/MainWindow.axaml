@@ -13,7 +13,9 @@
     xmlns:vm="using:Portal.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <tio:TioWindow.TitleBarLeftContent>
-        <Border Background="Red" />
+        <StackPanel Orientation="Horizontal">
+            <Rectangle Fill="Red" />
+        </StackPanel>
     </tio:TioWindow.TitleBarLeftContent>
     hello
 </tio:TioWindow>

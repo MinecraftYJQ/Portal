@@ -1,5 +1,6 @@
 ﻿using System;
 using Avalonia;
+using HotAvalonia;
 
 namespace Portal.Desktop;
 
@@ -18,6 +19,7 @@ sealed class Program
             .UsePlatformDetect()
 #if DEBUG
             .WithDeveloperTools()
+            .UseHotReload()
 #endif
             .WithInterFont()
             .LogToTrace();
