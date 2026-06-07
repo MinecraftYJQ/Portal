@@ -27,4 +27,9 @@
       <ProjectReference Include="..\..\module\Tio.Avalonia.Standard\src\Tio.Avalonia.Standard.Tab\Tio.Avalonia.Standard.Tab.csproj" />
       <ProjectReference Include="..\..\module\Tio.Avalonia.Standard\src\Tio.Avalonia.Standard\Tio.Avalonia.Standard.csproj" />
     </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Const\Version.txt" />
+      <EmbeddedResource Include="Const\Version.txt" />
+    </ItemGroup>
 </Project>

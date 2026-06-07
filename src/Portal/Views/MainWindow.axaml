@@ -1,5 +1,13 @@
 <tio:TioWindow
+    ExtendClientAreaToDecorationsHint="{OnPlatform Default=True,
+                                                   macOS=False}"
     Icon="/Assets/avalonia-logo.ico"
+    IsCloseBtnShow="{OnPlatform Default=True,
+                                macOS=False}"
+    IsMaxBtnShow="{OnPlatform Default=True,
+                              macOS=False}"
+    IsMinBtnShow="{OnPlatform Default=True,
+                              macOS=False}"
     Title="Portal"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -12,10 +20,26 @@
     xmlns:views="using:Portal.Views"
     xmlns:vm="using:Portal.ViewModels"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <tio:TioWindow.Resources>
+        <SolidColorBrush Color="Transparent" x:Key="TitleBarBackgroundColor" />
+    </tio:TioWindow.Resources>
     <tio:TioWindow.TitleBarLeftContent>
-        <StackPanel Orientation="Horizontal">
-            <Rectangle Fill="Red" />
-        </StackPanel>
+        <Panel>
+            <StackPanel
+                Margin="{OnPlatform Default=8 0 0 0,
+                                    macOS=99 0 0 0}"
+                Orientation="Horizontal"
+                VerticalAlignment="Center">
+                <Rectangle
+                    Fill="Red"
+                    Height="22"
+                    Width="22" />
+                <TextBlock
+                    Margin="8,0,0,0"
+                    Text="Portal"
+                    VerticalAlignment="Center" />
+            </StackPanel>
+        </Panel>
     </tio:TioWindow.TitleBarLeftContent>
     hello
 </tio:TioWindow>

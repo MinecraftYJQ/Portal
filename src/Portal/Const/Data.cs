@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Portal.Classes.Entries;
 using ReactiveUI.Fody.Helpers;
 using Tio.Avalonia.Standard.Modules.Platform;
 
@@ -12,6 +13,8 @@ public class Data : ObservableObject
     {
         get { return _instance ??= new Data(); }
     }
+
+    public static ConfigEntry ConfigEntry { get; set; }
 
     public static DesktopType DesktopType => DesktopTypeDetector.CurrentPlatform; 
     public static UiProperty UiProperty { get; } = UiProperty.Instance;
