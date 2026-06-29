@@ -30,6 +30,18 @@
         <common:NavScrollOpacityMaskConverter x:Key="NavScrollOpacityMaskConverter" />
         <converter:IntCompareConverter x:Key="IntCompareConverter" />
     </tio:TioWindow.Resources>
+    <tio:TioWindow.Styles>
+        <Style Selector="Border.tab-root:pointerover">
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+        <Style Selector="Border.tab-root">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Duration="0:0:0.15" Property="Opacity" />
+                </Transitions>
+            </Setter>
+        </Style>
+    </tio:TioWindow.Styles>
     <tio:TioWindow.TitleBarLeftContent>
         <StackPanel
             Margin="{OnPlatform Default=8 0 0 0,

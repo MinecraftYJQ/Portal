@@ -12,6 +12,7 @@ using Tio.Avalonia.Standard.Modules.Platform;
 using Tio.Avalonia.Standard.Standard.Ui;
 using Tio.Avalonia.Standard.Tab.Common;
 using Tio.Avalonia.Standard.Tab.Entries;
+using Tio.Avalonia.Standard.Tab.Extensions;
 using Tio.Avalonia.Standard.Tab.Interface;
 using TioUi.Common.Helpers;
 using TioUi.Controls;
@@ -42,6 +43,10 @@ public partial class TabWindow : TioTabWindowBase
         DataContext = this;
         Events();
         Keys();
+        
+        // 启用标签页拖拽重新排序功能
+        TabSelectionList.EnableTabDragDrop(this);
+        
         NavScrollViewer.ScrollChanged += (_, _) => { IsTabMaskVisible = NavScrollViewer.Offset.X > 0; };
         CreateNewTabFunc = () =>
         {
