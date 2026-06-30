@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IO;
 using Portal.Const;
+using Portal.Core.Minecraft;
 using Portal.Views;
 using Tio.Avalonia.Standard.Modules.Events;
 using Tio.Avalonia.Standard.Modules.Platform;
@@ -14,6 +15,7 @@ public static class Initializer
     public static void App()
     {
         Config.Initialize();
+        MinecraftCoreInitializer.Initialize(Data.Instance.Version);
     }
 
     public static void Ui()

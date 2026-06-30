@@ -126,4 +126,8 @@ public partial class TabWindow : TioTabWindowBase
         );
         e.Handled = true;
     }
+
+    private void Button1_OnClick(object? sender, RoutedEventArgs e)
+    {
+Console.WriteLine(13123123);    }
 }

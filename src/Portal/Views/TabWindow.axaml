@@ -9,7 +9,7 @@
     IsMinBtnShow="{OnPlatform Default=True,
                               macOS=False}"
     Title="Portal"
-    TitleBarControlBtnMargin="0,0,4,0"
+    TitleBarControlBtnMargin="0,0,10,0"
     TitleBarHeight="44"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -44,6 +44,7 @@
     </tio:TioWindow.Styles>
     <tio:TioWindow.TitleBarLeftContent>
         <StackPanel
+            IsHitTestVisible="False"
             Margin="{OnPlatform Default=8 0 0 0,
                                 macOS=99 0 0 0}"
             Orientation="Horizontal"
@@ -55,11 +56,49 @@
                 Width="22" />
             <TextBlock
                 FontSize="16"
-                Margin="12,2,0,0"
+                Margin="8,2,0,0"
                 Text="Portal"
                 VerticalAlignment="Center" />
         </StackPanel>
     </tio:TioWindow.TitleBarLeftContent>
+    <tio:TioWindow.TitleBarRightContent>
+        <DockPanel VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Button Classes="custom-title-bar-button">
+                    <PathIcon
+                        Data="M1024,1024z M0,0z M812.6976,195.976533L936.021333,409.6A204.8,204.8,0,0,1,936.021333,614.4L812.714667,828.023467A204.8,204.8,0,0,1,635.3408,930.423467L388.676267,930.423467A204.8,204.8,0,0,1,211.3024,828.023467L87.978667,614.4A204.8,204.8,0,0,1,87.978667,409.6L211.3024,195.976533A204.8,204.8,0,0,1,388.676267,93.576533L635.323733,93.576533A204.8,204.8,0,0,1,812.6976,195.976533z M753.578667,230.109867A136.533333,136.533333,0,0,0,635.323733,161.8432L388.676267,161.8432A136.533333,136.533333,0,0,0,270.421333,230.109867L147.114667,443.733333A136.533333,136.533333,0,0,0,147.114667,580.266667L270.4384,793.890133A136.533333,136.533333,0,0,0,388.693333,862.1568L635.3408,862.1568A136.533333,136.533333,0,0,0,753.595733,793.890133L876.885333,580.266667A136.533333,136.533333,0,0,0,876.885333,443.733333L753.5616,230.109867z M1024,1024z M0,0z M512,682.666667C606.2592,682.666667 682.666667,606.2592 682.666667,512 682.666667,417.7408 606.2592,341.333333 512,341.333333 417.7408,341.333333 341.333333,417.7408 341.333333,512 341.333333,606.2592 417.7408,682.666667 512,682.666667z M512,614.4A102.4,102.4,0,1,1,512,409.6A102.4,102.4,0,0,1,512,614.4z"
+                        Height="16"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Width="16" />
+                    <Button.Flyout>
+                        <MenuFlyout>
+                            <MenuItem Header="设置" InputGesture="ctrl+alt+s">
+                                <MenuItem.Icon>
+                                    <PathIcon
+                                        Data="F1 M640,640z M0,0z M259.1,73.5C262.1,58.7,275.2,48,290.4,48L350.2,48C365.4,48,378.5,58.7,381.5,73.5L396,143.5C410.1,149.5,423.3,157.2,435.3,166.3L503.1,143.8C517.5,139,533.3,145,540.9,158.2L570.8,210C578.4,223.2,575.7,239.8,564.3,249.9L511,297.3C511.9,304.7 512.3,312.3 512.3,320 512.3,327.7 511.8,335.3 511,342.7L564.4,390.2C575.8,400.3,578.4,417,570.9,430.1L541,481.9C533.4,495,517.6,501.1,503.2,496.3L435.4,473.8C423.3,482.9,410.1,490.5,396.1,496.6L381.7,566.5C378.6,581.4,365.5,592,350.4,592L290.6,592C275.4,592,262.3,581.3,259.3,566.5L244.9,496.6C230.8,490.6,217.7,482.9,205.6,473.8L137.5,496.3C123.1,501.1,107.3,495.1,99.7,481.9L69.8,430.1C62.2,416.9,64.9,400.3,76.3,390.2L129.7,342.7C128.8,335.3 128.4,327.7 128.4,320 128.4,312.3 128.9,304.7 129.7,297.3L76.3,249.8C64.9,239.7,62.3,223,69.8,209.9L99.7,158.1C107.3,144.9,123.1,138.9,137.5,143.7L205.3,166.2C217.4,157.1,230.6,149.5,244.6,143.4L259.1,73.5z M320.3,400C364.5,399.8 400.2,363.9 400,319.7 399.8,275.5 363.9,239.8 319.7,240 275.5,240.2 239.8,276.1 240,320.3 240.2,364.5 276.1,400.2 320.3,400z"
+                                        Height="16"
+                                        Width="16" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="插件" />
+                            <Separator />
+                            <MenuItem Header="主题">
+                                <MenuItem Header="浅色" />
+                                <MenuItem Header="深色" />
+                                <MenuItem Header="幻影" />
+                            </MenuItem>
+                        </MenuFlyout>
+                    </Button.Flyout>
+                </Button>
+                <Separator
+                    Background="{DynamicResource ForegroundColor}"
+                    Height="18"
+                    Margin="5,0"
+                    Width="1" />
+            </StackPanel>
+        </DockPanel>
+    </tio:TioWindow.TitleBarRightContent>
     <Grid>
         <ScrollViewer
             Background="Transparent"
@@ -67,7 +106,7 @@
             Height="44"
             HorizontalAlignment="Left"
             HorizontalScrollBarVisibility="Auto"
-            Margin="85,-44,85,0"
+            Margin="75,-44,85,0"
             Name="NavScrollViewer"
             OpacityMask="{Binding IsTabMaskVisible, Converter={StaticResource NavScrollOpacityMaskConverter}}"
             PointerWheelChanged="InputElement_OnPointerWheelChanged"

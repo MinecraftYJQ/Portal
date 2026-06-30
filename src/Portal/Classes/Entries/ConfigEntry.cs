@@ -1,10 +1,8 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using Avalonia.Media;
-using Avalonia.Styling;
 using CommunityToolkit.Mvvm.ComponentModel;
-using Newtonsoft.Json;
-using ReactiveUI;
-using ReactiveUI.Fody.Helpers;
+using Portal.Core.Minecraft.Account;
 using TioUi.Common.Helpers;
 using TioUi.Shared;
 
@@ -17,9 +15,11 @@ public partial class ConfigEntry : ObservableObject
         PropertyChanged += OnPropertyChanged;
     }
 
-    [ObservableProperty] private Theme _theme = Theme.Light;
-    [ObservableProperty] private Color _themeColor  = Color.Parse("#1BD76A");
-    [ObservableProperty] private bool _useFilePicker = true;
+    [ObservableProperty] public partial Theme Theme { get; set; } = Theme.Light;
+    [ObservableProperty] public partial Color ThemeColor { get; set; } = Color.Parse("#1BD76A");
+    [ObservableProperty] public partial bool UseFilePicker { get; set; } = true;
+    public ObservableCollection<AccountBase> MinecraftAccounts = [];
+    [ObservableProperty] public partial AccountBase UsingMinecraftAccount { get; set; }
 
     private void OnPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
