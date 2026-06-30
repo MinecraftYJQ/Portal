@@ -1,5 +1,6 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using System.IO;
+using Avalonia;
 using Portal.Const;
 using Portal.Core.Minecraft;
 using Portal.Views;
@@ -28,7 +29,7 @@ public static class Initializer
         
         LoopGc.BeginLoop();
         
-        Functions.CreateNewTabWindowFunc = () => new TabWindow(false);
+        Functions.CreateNewTabWindowFunc = _ => new TabWindow(false);
         
         InitializationEvents.RaiseAfterUiLoaded();
     }
