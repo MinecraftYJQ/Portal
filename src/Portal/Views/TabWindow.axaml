@@ -194,28 +194,6 @@
                                 Name="ItemRoot"
                                 PointerPressed="OnPointerPressed"
                                 Tag="{Binding}">
-                                <Border.ContextFlyout>
-                                    <MenuFlyout>
-                                        <MenuItem
-                                            Command="{Binding Close}"
-                                            Header="关闭标签页"
-                                            InputGesture="ctrl+w"
-                                            IsVisible="{Binding IsCloseable}">
-                                            <MenuItem.Icon>
-                                                <PathIcon
-                                                    Data="M13.41 12l4.3-4.29a1 1 0 1 0-1.42-1.42L12 10.59l-4.29-4.3a1 1 0 0 0-1.42 1.42l4.3 4.29-4.3 4.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l4.29-4.3 4.29 4.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"
-                                                    Height="10"
-                                                    VerticalAlignment="Center"
-                                                    Width="10" />
-                                            </MenuItem.Icon>
-                                        </MenuItem>
-                                        <MenuItem
-                                            Command="{Binding CloseOther}"
-                                            Header="关闭其他标签页"
-                                            IsVisible="{Binding Window.Tabs.Count, Converter={StaticResource IntCompareConverter}, ConverterParameter='&gt; 1'}" />
-                                        <MenuItem Command="{Binding MoveTabToNewWindow}" Header="在新窗口打开" />
-                                    </MenuFlyout>
-                                </Border.ContextFlyout>
                                 <DockPanel Margin="8,0,10,0" VerticalAlignment="Center">
                                     <PathIcon
                                         Data="{Binding Icon}"

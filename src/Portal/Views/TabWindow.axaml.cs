@@ -123,7 +123,19 @@ public partial class TabWindow : TioTabWindowBase
 
     private void OnPointerPressed(object? sender, PointerPressedEventArgs e)
     {
-        if (!e.GetCurrentPoint(this).Properties.IsMiddleButtonPressed) return;
+        var point = e.GetCurrentPoint(this);
+        if (point.Properties.IsRightButtonPressed)
+        {
+            if (sender is not Border border) return;
+            var tab = border.Tag as TabEntry;
+            if (tab == null) return;
+            var flyout = tab.BuildContextMenu();
+            flyout.ShowAt(border);
+            e.Handled = true;
+            return;
+        }
+        
+        if (!point.Properties.IsMiddleButtonPressed) return;
         var c = ((Border)sender).Tag as TabEntry;
         c?.Close();
     }
