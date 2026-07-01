@@ -66,7 +66,8 @@ public partial class TabWindow : TioTabWindowBase
                 BeginMoveDrag(e);
             };
         }
-        else
+
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
             TabSelectionList.EnableTabDragDrop(this);
         }
