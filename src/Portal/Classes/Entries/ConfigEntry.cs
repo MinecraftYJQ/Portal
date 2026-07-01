@@ -16,7 +16,7 @@ public partial class ConfigEntry : ObservableObject
     }
 
     [ObservableProperty] public partial Theme Theme { get; set; } = Theme.Light;
-    [ObservableProperty] public partial Color ThemeColor { get; set; } = Color.Parse("#1BD76A");
+    [ObservableProperty] public partial Color ThemeColor { get; set; } = Color.Parse("#1890ff");
     [ObservableProperty] public partial bool UseFilePicker { get; set; } = true;
     public ObservableCollection<AccountBase> MinecraftAccounts = [];
     [ObservableProperty] public partial AccountBase UsingMinecraftAccount { get; set; }

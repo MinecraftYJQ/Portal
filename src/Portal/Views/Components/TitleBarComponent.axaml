@@ -1,4 +1,4 @@
-﻿<StackPanel
+<StackPanel
     Orientation="Horizontal"
     d:DesignHeight="450"
     d:DesignWidth="800"
@@ -18,7 +18,8 @@
         Click="AccountButton_Click"
         Margin="5,0"
         Theme="{StaticResource TransparentButton}"
-        VerticalAlignment="Center">
+        VerticalAlignment="Center"
+        x:Name="AccountButton">
         <Border
             Background="{DynamicResource PopupBackgroundColor}"
             BorderBrush="{DynamicResource PopupBorderBrush}"
@@ -27,42 +28,6 @@
             Padding="8,2">
             <TextBlock FontSize="13" Text="无账户" />
         </Border>
-        <Button.Flyout>
-            <Flyout VerticalOffset="5">
-                <StackPanel Margin="10,0">
-                    <TextBlock FontSize="14" Margin="0,5,0,10">切换账户</TextBlock>
-                    <tio:TioExpander
-                        BorderBrush="{DynamicResource PanelBorderBrush}"
-                        BorderThickness="1"
-                        HeaderHeight="54"
-                        IconHeight="14"
-                        IconMargin="10,0,5,0"
-                        IconWidth="18"
-                        Margin="0,0,0,10"
-                        VerticalAlignment="Top"
-                        Width="250">
-                        <tio:TioExpander.Header>
-                            <StackPanel Orientation="Horizontal">
-                                <Border
-                                    Background="Aquamarine"
-                                    ClipToBounds="True"
-                                    CornerRadius="10"
-                                    Height="36"
-                                    Width="36" />
-                                <StackPanel Margin="7,0,0,0">
-                                    <TextBlock Text="Steve" />
-                                    <TextBlock FontSize="12" Text="LittleSkin" />
-                                </StackPanel>
-                            </StackPanel>
-                        </tio:TioExpander.Header>
-                        <Rectangle
-                            Fill="Red"
-                            Height="500"
-                            Width="220" />
-                    </tio:TioExpander>
-                </StackPanel>
-            </Flyout>
-        </Button.Flyout>
     </Button>
     <Button
         Classes="custom-title-bar-button"
@@ -162,4 +127,42 @@
                                macOS=False}"
         Margin="5,0"
         Width="1" />
+    <Button IsVisible="False" Name="AccountFlyout">
+        <Button.Flyout>
+            <Flyout VerticalOffset="5">
+                <StackPanel Margin="10,0">
+                    <TextBlock FontSize="14" Margin="0,5,0,10">切换账户</TextBlock>
+                    <tio:TioExpander
+                        BorderBrush="{DynamicResource PanelBorderBrush}"
+                        BorderThickness="1"
+                        HeaderHeight="54"
+                        IconHeight="14"
+                        IconMargin="10,0,5,0"
+                        IconWidth="18"
+                        Margin="0,0,0,10"
+                        VerticalAlignment="Top"
+                        Width="250">
+                        <tio:TioExpander.Header>
+                            <StackPanel Orientation="Horizontal">
+                                <Border
+                                    Background="Aquamarine"
+                                    ClipToBounds="True"
+                                    CornerRadius="10"
+                                    Height="36"
+                                    Width="36" />
+                                <StackPanel Margin="7,0,0,0">
+                                    <TextBlock Text="Steve" />
+                                    <TextBlock FontSize="12" Text="LittleSkin" />
+                                </StackPanel>
+                            </StackPanel>
+                        </tio:TioExpander.Header>
+                        <Rectangle
+                            Fill="Red"
+                            Height="500"
+                            Width="220" />
+                    </tio:TioExpander>
+                </StackPanel>
+            </Flyout>
+        </Button.Flyout>
+    </Button>
 </StackPanel>

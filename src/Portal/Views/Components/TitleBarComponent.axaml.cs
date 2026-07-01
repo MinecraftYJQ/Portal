@@ -1,8 +1,11 @@
-﻿using Avalonia;
+using System;
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 using Portal.Const;
+using Portal.Core.Operations;
 
 namespace Portal.Views.Components;
 
@@ -31,9 +34,10 @@ public partial class TitleBarComponent : StackPanel
     {
         if (Data.ConfigEntry.MinecraftAccounts.Count == 0)
         {
+            _ = AddAccount.Main(sender!);
             return;
         }
 
-        ((Button)sender).Flyout.IsOpen = true;
+        AccountFlyout.Flyout.ShowAt(AccountButton);
     }
 }

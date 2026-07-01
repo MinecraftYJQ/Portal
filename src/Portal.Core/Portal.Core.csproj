@@ -14,4 +14,8 @@
       <Folder Include="Minecraft\Account\Authenticator\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\..\module\Tio.Avalonia.Standard\module\TioUi.Avalonia\src\TioUi\TioUi.csproj" />
+    </ItemGroup>
+
 </Project>
