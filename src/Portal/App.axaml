@@ -17,4 +17,21 @@
         <tio:TioUiTheme />
         <StyleInclude Source="/Styles/Tab.axaml" />
     </Application.Styles>
+    <NativeMenu.Menu>
+        <NativeMenu>
+            <NativeMenuItem Header="设置" />
+            <NativeMenuItem Header="主题">
+                <NativeMenuItem.Menu>
+                    <NativeMenu>
+                        <NativeMenuItem Click="ThemeDefault_OnClick" Header="跟随系统" />
+                        <NativeMenuItem Click="ThemeLight_OnClick" Header="浅色" />
+                        <NativeMenuItem Click="ThemeDark_OnClick" Header="深色" />
+                        <NativeMenuItem Click="ThemeMirage_OnClick" Header="幻影" />
+                    </NativeMenu>
+                </NativeMenuItem.Menu>
+            </NativeMenuItem>
+            <NativeMenuItemSeparator />
+            <NativeMenuItem Header="关于" />
+        </NativeMenu>
+    </NativeMenu.Menu>
 </Application>

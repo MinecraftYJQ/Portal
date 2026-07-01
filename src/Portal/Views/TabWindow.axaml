@@ -1,6 +1,4 @@
 <tio:TioWindow
-    ExtendClientAreaToDecorationsHint="{OnPlatform Default=True,
-                                                   macOS=False}"
     Icon="/Assets/avalonia-logo.ico"
     IsCloseBtnShow="{OnPlatform Default=True,
                                 macOS=False}"
@@ -45,23 +43,20 @@
         </Style>
     </tio:TioWindow.Styles>
     <tio:TioWindow.TitleBarLeftContent>
-        <StackPanel
-            IsHitTestVisible="False"
-            Margin="{OnPlatform Default=8 0 0 0,
-                                macOS=99 0 0 0}"
-            Orientation="Horizontal"
-            VerticalAlignment="Center">
-            <Rectangle
-                Fill="Red"
-                Height="22"
-                IsVisible="False"
-                Width="22" />
-            <TextBlock
-                FontSize="16"
-                Margin="8,2,0,0"
-                Text="Portal"
-                VerticalAlignment="Center" />
-        </StackPanel>
+        <Border Name="TitleBarLogo">
+            <StackPanel
+                IsHitTestVisible="False"
+                Margin="{OnPlatform Default=8 0 0 0,
+                                    macOS=65 0 0 0}"
+                Orientation="Horizontal"
+                VerticalAlignment="Center">
+                <TextBlock
+                    FontSize="16"
+                    Margin="8,2,0,0"
+                    Text="Portal"
+                    VerticalAlignment="Center" />
+            </StackPanel>
+        </Border>
     </tio:TioWindow.TitleBarLeftContent>
     <tio:TioWindow.TitleBarRightContent>
         <DockPanel Name="TitleBarThings" VerticalAlignment="Center">
@@ -154,6 +149,8 @@
                 <Separator
                     Background="{DynamicResource ForegroundColor}"
                     Height="18"
+                    IsVisible="{OnPlatform Default=True,
+                                           macOS=False}"
                     Margin="5,0"
                     Width="1" />
             </StackPanel>
@@ -186,6 +183,8 @@
                     <tio:SelectionList.ItemTemplate>
                         <DataTemplate DataType="entries:TabEntry">
                             <Border
+                                BorderBrush="{DynamicResource PanelBackgroundColor}"
+                                BorderThickness="0"
                                 Classes="tab-root"
                                 CornerRadius="10"
                                 Height="30"
@@ -197,14 +196,14 @@
                                 <DockPanel Margin="8,0,10,0" VerticalAlignment="Center">
                                     <PathIcon
                                         Data="{Binding Icon}"
-                                        Height="20"
+                                        Height="19"
                                         IsVisible="{Binding IsIconVisible}"
                                         Margin="0,0,4,0"
-                                        Width="20" />
+                                        Width="19" />
                                     <Grid>
                                         <ContentControl
                                             Content="{Binding Header}"
-                                            Margin="0,0,0,0"
+                                            Margin="2,-2,0,0"
                                             VerticalAlignment="Center" />
                                     </Grid>
                                     <Grid

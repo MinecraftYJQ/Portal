@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Portal.Const;
 using Tio.Avalonia.Standard.Modules.Events;
 using Tio.Avalonia.Standard.Modules.Helper;
+using TioUi.Shared;
 
 namespace Portal;
 
@@ -44,5 +45,25 @@ public partial class App : Application
             if (!await ApplicationEvents.RaiseAppExiting()) return;
             Environment.Exit(0);
         }
+    }
+
+    private void ThemeMirage_OnClick(object? sender, EventArgs e)
+    {
+        Data.ConfigEntry.Theme = Theme.Mirage;
+    }
+
+    private void ThemeDark_OnClick(object? sender, EventArgs e)
+    {
+        Data.ConfigEntry.Theme = Theme.Dark;
+    }
+
+    private void ThemeLight_OnClick(object? sender, EventArgs e)
+    {
+        Data.ConfigEntry.Theme = Theme.Light;
+    }
+
+    private void ThemeDefault_OnClick(object? sender, EventArgs e)
+    {
+        Data.ConfigEntry.Theme = Theme.System;
     }
 }

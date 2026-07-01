@@ -1,5 +1,6 @@
 using System;
 using System.Collections.ObjectModel;
+using System.Runtime.InteropServices;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -35,7 +36,6 @@ public partial class TabWindow : TioTabWindowBase
         Build();
     }
 
-    [AvaloniaHotReload]
     private void Build()
     {
         InitializeComponent();
@@ -60,6 +60,12 @@ public partial class TabWindow : TioTabWindowBase
         }
     }
 
+    [AvaloniaHotReload]
+    public void Hot()
+    {
+        TabSelectionList.EnableTabDragDrop(this);
+    }
+
     public TabWindow(bool isMainWindow)
     {
         IsMainWindow = isMainWindow;
@@ -68,38 +74,50 @@ public partial class TabWindow : TioTabWindowBase
 
     private void Events()
     {
-        if (Data.DesktopType == DesktopType.MacOs)
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
         {
             var platform = TryGetPlatformHandle();
             if (platform is null) return;
             var nsWindow = platform.Handle;
             if (nsWindow == IntPtr.Zero) return;
+            Loaded += (_, _) => { MacOsWindowHandler(nsWindow); };
+            // SizeChanged += (_, _) => { MacOsWindowHandler(nsWindow); };
             PropertyChanged += (_, e) =>
             {
-                try
-                {
-                    MacOsWindowHandler.RefreshTitleBarButtonPosition(nsWindow);
-                    MacOsWindowHandler.HideZoomButton(nsWindow);
-                }
-                catch (Exception exception)
-                {
-                    Logger.Error(exception);
-                }
+                if (e.PropertyName != nameof(WindowState)) return;
+                MacOsWindowHandler(nsWindow);
             };
             TitleBarThings.SizeChanged += (_, _) =>
             {
-                NavScrollViewer.Margin = new Thickness(75, -44, TitleBarThings.Bounds.Width, 0);
+                NavScrollViewer.Margin =
+                    new Thickness(TitleBarLogo.Bounds.Width + 10, -44, TitleBarThings.Bounds.Width, 0);
             };
         }
         else
         {
             TitleBarThings.SizeChanged += (_, _) =>
             {
-                NavScrollViewer.Margin = new Thickness(75, -44, 90 + TitleBarThings.Bounds.Width, 0);
+                NavScrollViewer.Margin = new Thickness(TitleBarLogo.Bounds.Width + 10, -44,
+                    90 + TitleBarThings.Bounds.Width, 0);
             };
         }
 
         NavScrollViewer.ScrollChanged += (_, _) => { IsTabMaskVisible = NavScrollViewer.Offset.X > 0; };
+        return;
+
+        void MacOsWindowHandler(IntPtr nsWindow)
+        {
+            try
+            {
+                TioUi.Common.Helpers.MacOsWindowHandler.RefreshTitleBarButtonPosition(nsWindow, x: 19, y: -3,
+                    spacing: 25);
+                TioUi.Common.Helpers.MacOsWindowHandler.HideZoomButton(nsWindow);
+            }
+            catch (Exception exception)
+            {
+                Logger.Error(exception);
+            }
+        }
     }
 
     private void Keys()
@@ -134,7 +152,7 @@ public partial class TabWindow : TioTabWindowBase
             e.Handled = true;
             return;
         }
-        
+
         if (!point.Properties.IsMiddleButtonPressed) return;
         var c = ((Border)sender).Tag as TabEntry;
         c?.Close();
