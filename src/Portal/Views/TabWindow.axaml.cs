@@ -58,8 +58,18 @@ public partial class TabWindow : TioTabWindowBase
             CreateNewTabFunc();
         }
 
-        if (!RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+        {
+            TabSelectionList.PointerPressed += (_, e) =>
+            {
+                if (!e.Properties.IsLeftButtonPressed) return;
+                BeginMoveDrag(e);
+            };
+        }
+        else
+        {
             TabSelectionList.EnableTabDragDrop(this);
+        }
     }
 
     [AvaloniaHotReload]
