@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MinecraftLaunch" />
+      <PackageReference Include="CommunityToolkit.Mvvm" />
+      <PackageReference Include="MinecraftLaunch.Skin" />
+      <PackageReference Include="SkiaSharp" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Minecraft\Account\Authenticator\" />
+      <Folder Include="Minecraft\Extensions\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\module\LiteSkinViewer\LiteSkinViewer.2D\LiteSkinViewer.2D.csproj" />
+      <ProjectReference Include="..\..\module\LiteSkinViewer\LiteSkinViewer.3D\LiteSkinViewer.3D.csproj" />
+      <ProjectReference Include="..\..\module\LiteSkinViewer\LiteSkinViewer.Shared\LiteSkinViewer.Shared.csproj" />
+      <ProjectReference Include="..\..\module\Tio.Avalonia.Standard\module\TioUi.Avalonia\src\TioUi\TioUi.csproj" />
+      <ProjectReference Include="..\..\module\Tio.Avalonia.Standard\src\Tio.Avalonia.Standard.Tab\Tio.Avalonia.Standard.Tab.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Operations\Account\Microsoft.axaml.cs">
+        <DependentUpon>Microsoft.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+    </ItemGroup>
+
+</Project>
