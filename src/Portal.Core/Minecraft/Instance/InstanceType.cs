@@ -1,4 +1,4 @@
-﻿namespace Portal.Base.Enum;
+﻿namespace Portal.Core.Minecraft.Instance;
 
 public enum InstanceType
 {
